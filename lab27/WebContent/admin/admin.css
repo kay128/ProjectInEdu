@@ -1,0 +1,166 @@
+@charset "UTF-8";
+*{
+   font-family: 'Nanum Gothic', sans-serif;
+}
+#admin_fixed{
+	padding: 5px;
+	position: fixed;
+	right: 40px;
+	top: 200px;	
+	z-index: 1;
+	border: 1px solid;
+	border-radius: 10px;
+	border-color: #8f3c38;
+	background-color: white;
+}
+#admin_fixed a{
+	background-color: white;
+}
+#admin_adminIcon{	
+	vertical-align:middle;	
+}
+#admin_wrap{
+	background-color: white;
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+}
+hr{
+	background-color: #8f3c38;
+}
+/***********************************************사용자검색 **************************************************/
+#admin_table{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #FFFFFF;
+	border-radius: 7px;
+   	box-shadow: 5px 5px 10px -5px #8f3c38;
+}
+#admin_table th{
+	text-align: center;
+	vertical-align: middle;
+}
+#admin_table tr{
+	text-align: center;
+	vertical-align: middle;
+}
+#admin_search{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #8f3c38;
+	border-radius: 7px;
+   	box-shadow: 5px 5px 10px -5px #8f3c38;
+   	padding: 20px;
+}
+#admin_search #name{
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+}
+#admin_search #number{
+	padding: 10px;
+	text-align: center;
+	vertical-align: middle;
+}
+#iga{
+	padding-top: 5.5px;
+	vertical-align: middle;
+}
+#admin_detail{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+/***********************************************회원정보상세보기**************************************************/
+#user_img{
+	border:1px solid;
+	float: left;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.card-header{
+   color:#FFFFFF;
+}
+
+#order-div{
+   width: 100%;
+   margin-left:0;
+   margin-bottom: 23px;
+   padding:0;
+}
+
+#order-div-fir{
+   width: 100%;
+   margin-left:0;
+   margin-bottom: 23px;
+   padding:0;
+   
+   background-color: #FFFFFF;
+   
+   box-shadow: 5px 5px 10px -5px black;
+   border-radius: 10px;
+}
+
+#info-left{
+   width: 70%;
+   padding: 20px;
+   margin-right:auto;
+}
+
+#info-right{
+   width: 28%;
+   padding: 20px;
+   padding-right: 5px;
+   
+   text-align:center;
+}
+
+#info-right img{
+   width: 60%;
+   padding-bottom: 20px;
+   align-self: center;
+}
+
+#tables{
+   width: 100%;
+   font-size: 18px;
+   margin-bottom: 10px;
+   margin-left: 10px;
+}
+
+#tables th{
+   width: 25%;
+   padding: 3px;
+   
+   text-indent: 7px;
+}
+/***********************************************벼룩시장**************************************************/
+#admin_market{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #8f3c38;
+	border-radius: 7px;
+   	box-shadow: 5px 5px 10px -5px #8f3c38;
+   	padding: 20px;
+}
+/***********************************************모임검색**************************************************/
+#admin_calendar{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #8f3c38;
+	border-radius: 7px;
+   	box-shadow: 5px 5px 10px -5px #8f3c38;
+   	padding: 20px;
+}

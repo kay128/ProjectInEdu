@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+#main-wrap{
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-buttom: 50px;
+	
+	width: 70%;
+}
+
+#study-side-nav{
+	margin-left:0;
+	margin-right:auto;
+	
+	font-size: 20px;
+	
+	width: 25%;
+}
+
+#study-side-nav .card{
+	border-radius: 7px;
+	box-shadow: 5px 5px 10px -5px black;
+}
+
+#study-side-nav .card .card-header{
+	font-size: 22px;
+	text-align: center;
+	font-weight: bolder;
+	
+	color: #FFFFFF;
+}
+
+#study-side-nav .card .card-body{
+	padding-left:35px;
+}
+
+#wrap{
+	margin-left: auto;
+	margin-right: 0;
+	padding:20px;
+	
+	width: 73%;
+	
+	border-radius: 7px;
+	border: 1px solid #636465;
+	box-shadow: 5px 5px 10px -5px black;
+}
+
+h1{
+	text-align: center;
+}
+
+.media-body button{
+	margin-left: 15px;
+}
+
+.form-inline label{
+	font-weight: bold;
+	font-size:20px;
+}
+
+.form-inline input{
+	font-weight: bold;
+	font-size:20px;
+}
+
+.card-link{
+	font-weight: bold;
+	font-size:22px;
+	
+	color:black;
+}
+
+#study-side-nav a{
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+#study-side-nav a:hover{
+	color: #b3b3b3;
+}
+
+#wrap #accordion .card .card-header .card-link{
+	font-size: 22px;
+	font-weight: bolder;
+	
+	color: #FFFFFF;
+}
+
+#a{
+	padding-top: 3px;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+#kana{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	
+	text-align:center;
+	font-size: 24px;
+}
+
+#kana tr{
+	padding-top:40px;
+	padding-bottom:40px;
+	vertical-align: middle;
+}
+
+#kana td:hover{
+	background-color: #c8c8c8;
+}
+
+#main-content{
+	margin-left: 7%;
+	margin-right: 7%;
+	
+	font-size: 18px;
+}

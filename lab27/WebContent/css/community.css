@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+#main-wrap{
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-buttom: 50px;
+	
+	width: 70%;
+}
+
+#lefty
+{	
+	width: 27%;
+	
+	padding: 20px;
+	margin-right: 3%;
+}
+
+#lefty-title{
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 5px;
+	font-weight: bolder;
+	color:#FFFFFF;
+	
+	
+	background-color: #636465;
+	border-radius: 7px;
+	border: 1px solid #636465;
+	box-shadow: 5px 5px 10px -5px black;
+}
+
+#lefty-in{
+	width:95%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:15px;
+	
+	box-shadow: 5px 5px 10px -5px black;
+}
+
+#righty
+{
+	width: 70%;
+	
+	padding: 20px;
+	
+}
+
+h2{
+	text-align: center;
+	text-weight: bold;
+}
+h4{
+	text-align: center;
+	text-weight: bold;
+}
+h5{
+	text-align: center;
+	text-weight: bold;
+}
+
+table{
+	width: 100%;
+	font-weight: bold;
+	font-size: 18px;
+}
+td{
+	text-align: center;
+}
+
+.card{
+	box-shadow: 5px 5px 10px -5px black;
+}
+
+.card-footer{
+	text-align: right;
+	padding:2px;
+}
+
+.input-group{
+	border-radius: 7px;
+	box-shadow: 5px 5px 10px -5px black;
+}
+
+#change-form{
+	margin-left:25px;
+}
+
+#modal-change-fav{
+	color:#FFFFFF;
+}
+
+#modal-new-commu{
+	color:#FFFFFF;
+}

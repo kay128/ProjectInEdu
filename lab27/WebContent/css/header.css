@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+
+#i_header{
+	margin-top:10px;
+	margin-right:10px;
+	float:right;
+}
+
+#i_header_end{
+	clear:both;
+}
+#i_body{
+	clear:both;
+}
+
+#id_area{
+	background-color:royalblue;
+}
+
+
+
+
+
