@@ -1,0 +1,77 @@
+Travel Plan System
+1. 주요기능
+   - 일정 만들기 기능 => 일정 추가 => 저장
+   - 숙박 예약 기능 => 숙박업소 찾기 기능 => 예약
+   - 나의 일정 및 예약 보기 기능
+   - 로그인 / 회원 가입 기능
+   - 관리자 : 고객 보기 기능
+   - 관리자 : 숙박 업소 추가 기능
+      
+2. 테이블 구성 및 구조
+   customer : email, pass, nickname, authority
+   schedule : placeId, latitude, longitude, placeName
+   hotel : hotelId, hotelName, hotelAddress, quality, review
+   result : userid, sheduleId, sheduleTitle, placeId, visitDate, hotelId, checkIn, checkOut
+   
+3. 패키지와 클래스 구성도
+  1) view : webcontent 
+     header.jsp : 상단 메뉴바 (로그인 되었을 때와 로그인 되지 않았을 경우를 분리)
+     footer.jsp : 하단 메뉴바 (copyright에 관한 설명 언어 선택이 가능하다.)
+     index.jsp : 프로그램 실행시 가장 먼저 보여주는 페이지
+     login.jsp : 로그인 할 수 있는 ui를 보여 준다.
+     register.jsp : 회원가입 할 수 있는 ui를 보여 준다.
+     default.jsp 로그인하지 않고, 메뉴에 접근하려고 할 때 보여주는 페이지
+     create_schedule.jsp : 일정을 계획할 수 있는 페이지 
+     hotel.jsp : 숙박메뉴 선택시 연결되는 페이지
+     hotel_search.jsp : accomodation.jsp에서 검색 조건 입력 후 찾기 버튼을 누를 때 연결되는 페이지
+     hotel_select.jsp : 검색된 숙박업소 중 하나를 선택했을 때 나오는 페이지
+     myinfo.jsp : 로그인 된 nickname을 선택할 때 나오는 페이지
+     myinfo_accomodation.jsp : 마이페이지에서 숙박을 선택할 때 나오는 페이지
+     administration.jsp : 관리자로 로그인 했을 때 고객 리스트가 보여진다.
+     administration_hotel.jsp : 관리자로 로그인해서 숙박업소를 등록할 수 있는 페이지
+     
+  2) controller
+     FrontController.java(servlet)
+     ActionForward.java   
+     
+  3) action
+     -Action.java : 인터페이스
+     -LoginAction.java (매핑값 : login.do) 
+     login.jsp에서 연결되는 ActionServlet email과 password가 맞는지 확인해서 index.jsp 화면을 다시 보여준다.
+     -RegisterAction.java ( 매핑값 : register.do)
+     register.jsp에서 연결되는 ActionServlet 회원가입 가능 여부를 판단하여 index.jsp 화면을 다시 보여준다.
+     -CreateScheduleAction.java ( 매핑값 : create_schedule.do)
+     create_schedule.jsp에서 연결되는 ActionServlet 작성된 일정을 저장하는 기능을 한다.
+     -HotelAction.java (매핑값 : hotel.do)
+     hotel.jsp에서 연결되는 ActionServlet 추천 숙소를 보여준다.
+     -HotelSearch.java ( 매핑값 : hotel_search.do)  
+     hotel.jsp에서 찾기 버튼을 누르면 연결되는 ActionServlet 조건에 맞는 숙소를 보여준다.
+     -HotelSelectAction.java (매핑값 : hotel_select.do)
+     hotel_search.jsp에서 한 숙박업소를 선택할 때 연결되는 ActionServlet 숙속에 대한 상세정보를 리턴한다.
+     -MyInfoAction.java(매핑값 : myinfo.do)
+      nickname를 선택할 때 연결되는 ActionServlet user가 가지고 있는 모든 여행 일정을 보여준다.
+     -MyInfoHotelAction.java(매핑값 : myinfo_hotel.do)
+         나의 정보에서 숙박 버튼을 선택할 때 연결되는 ActionServlet user가 가지고 있는 모든 숙박 예약정보를 보여준다.
+     -AdminAction.java(admin.do)
+         관리자로 로그인 할시 연결되는 ActionServlet 모든 고객의 list를 보여준다.
+     -AdminHotelAction.java(admin_hotel.do)
+         관리자로 로그인해서 숙박업소 등록 버튼을 누를 때 연결되는 ActionServlet.
+     
+     
+  4) model == dto == vo
+     Customer.java
+     Schedule.java
+     Hotel.java
+     Result.java
+     
+  5) dao
+     CustomerDAO.java
+     ScheduleDAO.java
+     HotelDAO.java
+     ResultDAO.java
+     
+  6) db
+     JdbcUtils.java
+     
+  7) javascript 
+     webContent / script / tps.js

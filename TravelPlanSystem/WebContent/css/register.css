@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.body-login{
+				width : 100%;
+				margin : 0 auto;
+			}
+
+.row .btn{
+	margin : 0 10px;
+}
+
+#emailCheck {
+	color: red;
+	font-size: 13px;
+}
+
+#nickNameCheck {
+	color: red;
+	font-size: 13px;
+}

@@ -1,0 +1,22 @@
+﻿ 
+각자 컴퓨터의 이클립스를 시작할때 워크스페이스 경로에
+예 :  "C:/Users/L.S.H/Documents/JSL27/web_workspace/
+->>>>   .metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/TravelPlanSystem/
+이부분을 복사해서 붙여넣기 해주시고.
+파일탐색기로가서 
+C:/Users/L.S.H/Documents/JSL27/web_workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/TravelPlanSystem/
+
+이 주소 뒤에 images 폴더를 만들어주세요. 
+
+호텔을 등록하거나 수정할때 사진은 이곳에 저장되고 이곳에서 불러옵니다.
+
+코드에서는 
+Project Explorer에서 TravalPlanSystem을 선택하고 Java Resources의
+action에서 
+AdminHotelAddAction.java파일(55번째줄 수정필요)과 
+AdminHotelModiAddAction.java파일의 (46번째, 64번째줄 수정 필요)코드를 수정해주어야 합니다. 
+
+최종적으로 
+본인 이클립스 워크스페이스/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/TravelPlanSystem/images
+
+를 붙여넣어주시면 사진 업로드 및 수정이 가능합니다. 
