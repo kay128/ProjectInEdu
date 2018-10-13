@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+    
+<sqlMapConfig>
+	<properties resource = "db.properties"/> <!-- oracle 연결하겠다는 -->
+
+	<!-- DB Setting _ 직접 해야함. default 값 내에서 하면 됨 -->
+	<settings
+		cacheModelsEnabled = "true"
+		enhancementEnabled = "true"
+		lazyLoadingEnabled = "true"
+		maxRequests = "32"
+		maxSessions = "10"
+		maxTransactions = "32"
+		useStatementNamespaces = "false"/>
+	
+	<!-- typeAlias 닉네임 -->
+	
+	<!-- sql을 db로 호환하는 매니저  -->
+	<!-- commitRequired 자동커밋 할꺼니? -->
+	<!-- properties에서 상수 화 한거지 직접 입력해도 됨 -->
+	<transactionManager type = "JDBC" commitRequired = "false"> 
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name = "JDBC.Username" value = "${username}"/>
+			<property name = "JDBC.Password" value = "${password}"/>
+		</dataSource> 
+	</transactionManager>
+	
+	<!-- sql 소지자 명시 _ 실제 처리를 담당하는 CRUD문을 가지고 있는 파일 정의 -->
+	<sqlMap resource = "sql.xml"/>
+	
+</sqlMapConfig>

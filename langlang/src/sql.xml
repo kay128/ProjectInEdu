@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<typeAlias type="model.Student" alias="st"/>
+	<typeAlias type="model.Written" alias="wr"/>
+	<typeAlias type="model.Feedback" alias="fe"/>
+	
+	<resultMap class = "model.Student" id = "st">
+		<result property = "email" column = "email"/>
+		<result property = "pw" column = "pw"/>
+		<result property = "name" column = "name"/>
+		<result property = "contry" column = "contry"/>
+		<result property = "main_lang" column = "main_lang"/>
+	</resultMap>
+	
+	<resultMap class = "model.Written" id = "wr1">
+		<result property = "res_id" column = "res_id"/>
+		<result property = "lang" column = "lang"/>
+		<result property = "regdate" column = "regdate"/>
+		<result property = "title" column = "title"/>
+	</resultMap>
+	
+ 	<resultMap class = "model.Written" id = "wr">
+		<result property = "res_id" column = "res_id"/>
+		<result property = "name" column = "name"/>
+		<result property = "lang" column = "lang"/>
+		<result property = "regdate" column = "regdate"/>
+		<result property = "hit" column = "hit"/>
+		<result property = "title" column = "title"/>
+		<result property = "content" column = "content"/>
+		<result property= "feedbacks" resultMap="fe"/>
+	</resultMap>
+	
+	<resultMap class="model.Feedback" id="fe">
+		<result property = "feedback_id" column = "feedback_id" nullValue="0"/>
+		<result property = "res_id" column = "res_id"/>
+		<result property = "feedback_name" column = "feedback_name" nullValue="null"/>
+		<result property = "feedback_regdate" column = "feedback_regdate" nullValue="0000/00/00 00:00:00"/>
+		<result property = "super_id" column = "super_id" nullValue="0"/>
+		<result property = "lev" column = "lev" nullValue="0"/>
+		<result property = "feedback_rate" column = "feedback_rate" nullValue="0"/>
+		<result property = "feedback_content" column = "feedback_content" nullValue="null"/>
+	</resultMap>   
+		
+		<!-- student -->
+		<insert id="insert_st" parameterClass="st">
+			insert into student
+			<dynamic>
+				<isNotNull removeFirstPrepend="true" open = "(" close=")">
+					<isNotEmpty prepend = "," property = "email">
+						email
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "pw">
+						pw
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "name">
+						name
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "contry">
+						contry 
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "main_lang">
+						main_lang
+					</isNotEmpty>
+				</isNotNull>
+				values
+				<isNotNull removeFirstPrepend="true" open="(" close=")" >
+					<isNotEmpty prepend = "," property = "email">
+						#email#
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "pw">
+						#pw#
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "name">
+						#name#
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "contry">
+						#contry# 
+					</isNotEmpty>
+					<isNotEmpty prepend = "," property = "main_lang">
+						#main_lang#
+					</isNotEmpty>
+				</isNotNull>
+			</dynamic>
+		</insert>
+		
+		<select id = "select_st" parameterClass="st" resultMap="st">
+			select * from student
+			<dynamic prepend="where">
+				<isNotNull prepend = "where" removeFirstPrepend="true">
+					<isNotEmpty prepend = "and" property = "email">
+						email = #email#
+					</isNotEmpty>
+					<isNotEmpty prepend = "and" property = "pw">
+						pw = #pw#
+					</isNotEmpty>
+					<isNotEmpty prepend = "and" property = "name">
+						name = #name#
+					</isNotEmpty>
+					<isNotEmpty prepend = "and" property = "contry">
+						contry = #contry#
+					</isNotEmpty>
+					<isNotEmpty prepend = "and" property = "main_lang">
+						main_lang = #main_lang#
+					</isNotEmpty>
+				</isNotNull>
+			</dynamic>
+		</select>
+				
+		<select id = "select_check_email" parameterClass="String" resultMap="st">
+			select * from student where email = #email#
+		</select>
+		
+		<select id = "select_check_name" parameterClass="String" resultMap="st">
+			select * from student where name = #name#
+		</select>
+		
+		<update id="modify_st" parameterClass="st">
+			update student set pw = #pw#, contry = #contry#, main_lang = #main_lang# where email = #email#
+		</update>
+		
+		<delete id="delete_st" parameterClass="st">
+			delete from student where email = #email#
+		</delete>
+		
+		<!-- written -->
+				
+		<insert id="insert_wr" parameterClass="wr">
+			insert into written(res_id, name, lang, regdate, title, content) values(#res_id#, #name#, #lang#, sysdate, #title#, #content#)
+		</insert>
+		
+		<select id="last_id" resultClass="int">
+			select nvl(max(res_id), 0) from written
+		</select>
+		
+		<select id = "select_all_wr" resultMap="wr1">
+			select res_id, lang, regdate, title from written
+		</select>
+		
+		<select id = "select_wr_join" parameterClass="int" resultMap="wr">
+			select a.res_id as res_id, a.name, a.lang, a.regdate, a.hit, a.title, a.content, 
+			b.feedback_id, b.feedback_name, b.feedback_regdate, b.super_id, b.lev, b.feedback_rate, b.feedback_content
+			from written a left join feedback b
+			on a.res_id = b.res_id
+			where a.res_id = #res_id#
+		</select>
+		
+		<update id="update_hit" parameterClass="int">
+			update written set hit = hit+1 where res_id = #res_id#
+		</update>
+		
+		<delete id= "delete_wr" parameterClass="int">
+			delete from written where res_id = #res_id#
+		</delete>
+		
+		<update id="modify_wr" parameterClass="wr">
+			update written set title = #title#, lang = #lang#, content = #content# where res_id = #res_id#
+		</update>
+		
+		<!-- feedback -->
+		
+		<select id="last_feedback_id" resultClass="int">
+			select nvl(max(feedback_id), 0) from feedback
+		</select>
+		
+		<insert id="insert_fe" parameterClass="fe">
+			insert into feedback(feedback_id, res_id, feedback_name, feedback_regdate, lev, feedback_rate, feedback_content) values(#feedback_id#, #res_id#, #feedback_name#, sysdate, 1, #feedback_rate#, #feedback_content#)
+		</insert>
+		
+		<delete id= "delete_fe" parameterClass="int">
+			delete from feedback where feedback_id = #feedback_id#
+		</delete>
+		
+		<update id="modify_fe" parameterClass="fe">
+			update feedback set feedback_rate = #feedback_rate#, feedback_content = #feedback_content# where feedback_id = #feedback_id#
+		</update>
+	
+</sqlMap>

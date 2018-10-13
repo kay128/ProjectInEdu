@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="langP" extends = "struts-default">
+		<action name ="main">
+			<result>/view/main.jsp</result>
+		</action>
+	
+		<!-- User -->
+
+		<action name = "join_form">
+			<result>/view/join_form.jsp</result>
+		</action>
+	
+		<action name = "join" class = "action.JoinAction">
+			<result name = "input">/view/join_form.jsp</result>
+			<result name = "success" type="chain">
+				<param name="actionName">login</param>
+			</result>
+		</action>
+		
+		<action name = "login_form">
+			<result>/view/login_form.jsp</result>
+		</action>
+		
+		<action name = "login" class = "action.LoginAction">
+			<interceptor-ref name="prepare"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name = "success">/view/main.jsp</result>
+			<result name = "input">/view/login_form.jsp	</result>
+		</action>
+		
+		<action name = "logout" class="action.LogoutAction">
+			<result name="success">/view/main.jsp</result>
+		</action>
+		
+		<action name="user_info" class="action.UserInfo">
+			<result name="success">/view/user_info.jsp</result>
+		</action>
+		
+		<action name="user_modify" class="action.ModifyUser">
+			<result type="chain">user_info</result>
+		</action>
+		<action name="delete_user" class="action.DeleteUser">
+			<result type="chain">
+				<param name="actionName">logout</param>
+			</result>
+		</action>
+		
+		<!-- written -->
+		<action name = "written_list" class="action.WrittenList">
+			<result name = "success">/view/written_list.jsp</result>
+		</action>
+		
+		<action name = "view_written" class="action.ViewWritten">
+			<result name = "success">/view/view_written.jsp</result>
+		</action>
+		
+		<action name="written_form">
+			<result>/view/written_write.jsp</result>
+		</action>
+		
+		<action name="written_load" class="action.WrittenLoad">
+			<result type="chain">
+				<param name="actionName">view_written</param>
+			</result>
+		</action>
+		
+		<action name="check_form" class="action.Check" method="form">
+			<result>/view/check.jsp</result>
+		</action>
+		
+		<action name="check" class="action.Check">
+			<result name="modify_wr" type="chain">
+				<param name="actionName">modify_form</param>
+			</result>
+			<result name="delete_wr" type="chain">
+				<param name="actionName">delete_written</param>
+			</result>
+			<result name="modify_st" type="chain">
+				<param name="actionName">modify_form</param>
+			</result>
+			<result name="delete_st" type="chain">
+				<param name="actionName">delete_user</param>
+			</result>			
+			<result name="input_wr" type="chain">
+				<param name="actionName">view_written</param>
+			</result>
+			<result name="input_st" type="chain">
+				<param name="actionName">user_info</param>
+			</result>
+		</action>
+		
+		<action name="modify_form" class="action.ModifyForm">
+			<result name="written">/view/written_modify_form.jsp</result>
+			<result name="user">/view/user_modify_form.jsp</result>
+		</action>
+		
+		<action name="modify_load" class="action.ModifyLoad">
+			<interceptor-ref name="prepare"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="chain">
+				<param name="actionName">view_written</param>
+			</result>
+		</action>
+		
+		<action name="delete_written" class="action.DeleteWritten">
+			<result type="chain">
+				<param name="actionName">written_list</param>
+			</result>
+		</action>
+		
+		<!-- Feedback -->
+		
+		<action name="feedback_load" class="action.FeedbackLoad">
+			<result type="chain">
+				<param name="actionName">view_written</param>
+			</result>
+		</action>
+		
+		<action name="feedback_do" class="action.FeedbackDo">
+			<result name="modify" type="chain">
+				<param name="actionName">view_written</param>
+			</result>
+			<result name="delete" type="chain">
+				<param name="actionName">delete_feedback</param>
+			</result>
+		</action>
+		
+		<action name="delete_feedback" class="action.DeleteFeedback">
+			<result type="chain">
+				<param name="actionName">view_written</param>
+			</result>
+		</action>
+		
+		<action name="feedback_modify" class="action.FeedbackModify">
+			<interceptor-ref name="prepare"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result type="chain">
+				<param name="actionName">view_written</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>
